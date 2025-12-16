@@ -18,7 +18,7 @@ def send_json(sock, data):
 
 
 # ======================================================
-# 安全接收 JSON（處理 TCP 黏包 / 拆包）
+# 安全接收 JSON
 # ======================================================
 def recv_json_line(conn, buffer):
     while True:
@@ -68,7 +68,7 @@ def main():
         cmd = input("[指令] open / screenshot / shutdown / stream > ").strip()
 
         # ======================================================
-        # STREAM 模式（差分串流 + 精準滑鼠控制）
+        # STREAM 模式
         # ======================================================
         if cmd == "stream":
             send_json(conn, {"type": "stream_start"})
@@ -208,3 +208,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
