@@ -7,7 +7,7 @@ import numpy as np
 import cv2
 import time
 import threading
-import ctypes   # 使用 Win32 API 點擊（更穩定）
+import ctypes   # 使用 Win32 API 點擊
 
 SERVER_IP = "127.0.0.1"
 SERVER_PORT = 6000
@@ -16,7 +16,7 @@ streaming = False
 running = True
 
 # ======================================================
-# Windows API：SendInput 滑鼠點擊（不會亂飄）
+# Windows API：SendInput 滑鼠點擊
 # ======================================================
 user32 = ctypes.windll.user32
 
@@ -236,4 +236,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
