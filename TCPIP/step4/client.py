@@ -27,7 +27,7 @@ MOUSEEVENTF_LEFTDOWN = 0x0002
 MOUSEEVENTF_LEFTUP = 0x0004
 
 def click_at(x, y):
-    """在 (x, y) 執行滑鼠點擊（用絕對座標，滑鼠不會亂飛）"""
+   #在 (x, y) 執行滑鼠點擊
 
     screen_w = user32.GetSystemMetrics(0)
     screen_h = user32.GetSystemMetrics(1)
@@ -40,7 +40,7 @@ def click_at(x, y):
     abs_x = int(x * 65535 / screen_w)
     abs_y = int(y * 65535 / screen_h)
 
-    # 移動到指定位置（不會跳太誇張）
+    # 移動到指定位置
     user32.mouse_event(MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE, abs_x, abs_y, 0, 0)
 
     # 點擊
@@ -172,7 +172,7 @@ def handle_command(sock, command):
         send_json(sock, {"status": "ok"})
 
     # --------------------------------------------------
-    # 🔥 比例座標滑鼠點擊（最重要）
+    # 比例座標滑鼠點擊
     # --------------------------------------------------
     elif ctype == "mouse_click":
         nx = command["nx"]
@@ -236,3 +236,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
