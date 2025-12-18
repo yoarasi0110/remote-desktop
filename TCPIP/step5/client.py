@@ -66,7 +66,7 @@ def type_text(text):
 
 
 # ======================================================
-# 滑鼠點擊（絕對座標，不亂飛）
+# 滑鼠點擊
 # ======================================================
 def click_at(x, y):
     screen_w = user32.GetSystemMetrics(0)
@@ -196,7 +196,7 @@ def handle_command(sock, command):
         streaming = False
         send_json(sock, {"status": "ok"})
 
-    # 🔥 滑鼠點擊（比例座標）
+    # 滑鼠點擊（比例座標）
     elif ctype == "mouse_click":
         nx = command["nx"]
         ny = command["ny"]
@@ -212,7 +212,7 @@ def handle_command(sock, command):
 
         send_json(sock, {"status": "ok"})
 
-    # 🔥🔥 鍵盤輸入文字 🔥🔥
+    # 鍵盤輸入文字
     elif ctype == "keyboard":
         text = command["text"]
         type_text(text)
@@ -263,3 +263,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
