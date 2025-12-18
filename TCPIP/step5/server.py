@@ -4,7 +4,7 @@ import base64
 import os
 import cv2
 import numpy as np
-from pynput import keyboard    # ⭐ 用 pynput 捕捉鍵盤事件（全域）
+from pynput import keyboard    # 用 pynput 捕捉鍵盤事件
 import threading
 
 SERVER_IP = "0.0.0.0"
@@ -51,7 +51,7 @@ def mouse_callback(event, x, y, flags, param):
 # ======================================================
 # 鍵盤模式
 # ======================================================
-keyboard_mode = False      # ⭐ 按下 ` 進入鍵盤輸入模式
+keyboard_mode = False      # 按下 ` 進入鍵盤輸入模式
 keyboard_buffer = ""       # 可一次輸入多個字再送出
 conn_global = None         # 提供 listener 使用（避免 UnboundLocalError）
 
@@ -59,7 +59,7 @@ def on_press(key):
     global keyboard_mode, keyboard_buffer, conn_global
 
     # ───────────────────────────────────────────
-    # 1️⃣ 切換鍵盤模式（按下 `）
+    # 切換鍵盤模式（按下 `）
     # ───────────────────────────────────────────
     try:
         if key.char == '`':
@@ -76,7 +76,7 @@ def on_press(key):
         return
 
     # ───────────────────────────────────────────
-    # 2️⃣ 處理文字鍵
+    # 處理文字鍵
     # ───────────────────────────────────────────
     try:
         ch = key.char
@@ -87,7 +87,7 @@ def on_press(key):
         pass
 
     # ───────────────────────────────────────────
-    # 3️⃣ 特殊鍵：SPACE
+    # 特殊鍵：SPACE
     # ───────────────────────────────────────────
     if key == keyboard.Key.space:
         keyboard_buffer += " "
@@ -95,7 +95,7 @@ def on_press(key):
         return
 
     # ───────────────────────────────────────────
-    # 4️⃣ ENTER → 送出整段文字
+    # ENTER → 送出整段文字
     # ───────────────────────────────────────────
     if key == keyboard.Key.enter:
         if keyboard_buffer.strip() != "":
@@ -108,7 +108,7 @@ def on_press(key):
         return
 
     # ───────────────────────────────────────────
-    # 5️⃣ BACKSPACE
+    # BACKSPACE
     # ───────────────────────────────────────────
     if key == keyboard.Key.backspace:
         keyboard_buffer = keyboard_buffer[:-1]
@@ -136,7 +136,7 @@ def main():
 
     print(f"[SERVER] 等待 Client 連線 {SERVER_IP}:{SERVER_PORT} ...")
     conn, addr = sock.accept()
-    conn_global = conn     # ⭐ 提供給鍵盤 listener 使用
+    conn_global = conn     # 提供給鍵盤 listener 使用
     print(f"[SERVER] Client 已連線：{addr}")
 
     # 啟動全域鍵盤監聽
@@ -267,3 +267,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
